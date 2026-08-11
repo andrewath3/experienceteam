@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { Project } from "@/data/projects";
 import { withBasePath } from "@/lib/base-path";
+import { useFloatOffset } from "@/lib/use-float";
 
 export default function ScatterNode({
   project,
@@ -28,6 +29,9 @@ export default function ScatterNode({
   const direction = index % 2 === 0 ? 1 : -1;
   const parallaxY = useTransform(scrollYProgress, [0, 1], [-amplitude * direction, amplitude * direction]);
 
+  // Gentle idle drift so the whole node (ring + photo) reads as floating.
+  const { dx: floatX, dy: floatY } = useFloatOffset(index, 5, 7);
+
   return (
     <motion.div
       ref={ref}
@@ -45,32 +49,34 @@ export default function ScatterNode({
         height: size,
       }}
     >
-      {/* Ring stays put — the photo floats above it. */}
-      <div className="absolute inset-0 rounded-full border border-accent/40" />
+      {/* Idle float layer: drifts the ring + photo together; hover/click below is untouched. */}
+      <motion.div style={{ x: floatX, y: floatY }} className="relative h-full w-full">
+        <div className="absolute inset-0 rounded-full border border-accent/40" />
 
-      <motion.div
-        style={{ y: parallaxY }}
-        whileHover={{ x: 10 }}
-        transition={{ type: "spring", stiffness: 220, damping: 22 }}
-        className="group relative h-full w-full"
-      >
-        <Link
-          href={`/work/${project.slug}`}
-          className="block h-full w-full rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+        <motion.div
+          style={{ y: parallaxY }}
+          whileHover={{ x: 10 }}
+          transition={{ type: "spring", stiffness: 220, damping: 22 }}
+          className="group relative h-full w-full"
         >
-          <div className="relative h-full w-full overflow-hidden rounded-full border border-border-subtle bg-background">
-            <Image
-              src={withBasePath(project.image)}
-              alt={`${project.client} — ${project.title}`}
-              fill
-              sizes="260px"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-background/0 opacity-0 transition-all duration-300 group-hover:bg-background/60 group-hover:opacity-100">
-              <span className="text-xs font-bold uppercase tracking-wide text-accent">View Work</span>
+          <Link
+            href={`/work/${project.slug}`}
+            className="block h-full w-full rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+          >
+            <div className="relative h-full w-full overflow-hidden rounded-full border border-border-subtle bg-background">
+              <Image
+                src={withBasePath(project.image)}
+                alt={`${project.client} — ${project.title}`}
+                fill
+                sizes="260px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-background/0 opacity-0 transition-all duration-300 group-hover:bg-background/60 group-hover:opacity-100">
+                <span className="text-xs font-bold uppercase tracking-wide text-accent">View Work</span>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
