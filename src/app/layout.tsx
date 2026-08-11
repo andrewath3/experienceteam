@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ThemeScript from "@/components/ThemeScript";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GlobalContactBanner from "@/components/GlobalContactBanner";
@@ -23,11 +24,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <body
         className="min-h-full flex flex-col bg-background text-foreground"
         style={{ "--bg-image-url": `url(${basePath}/site-bg.svg)` } as React.CSSProperties}
       >
+        <ThemeScript />
         <Header />
         <main className="flex-1">{children}</main>
         <GlobalContactBanner />
