@@ -1,14 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { contactPage, contactFormFields, intakeEmail } from "@/data/contact";
+import type { ContactFormFields, ContactPageContent } from "@/lib/content/types";
 
 /**
  * No form backend exists yet — submitting opens a pre-filled email via mailto:
  * as a working stand-in. Swap for a real backend before launch (per PRD open
  * item: "submits to a single email destination — no routing logic").
  */
-export default function ContactForm() {
+export default function ContactForm({
+  contactPage,
+  contactFormFields,
+  intakeEmail,
+}: {
+  contactPage: ContactPageContent;
+  contactFormFields: ContactFormFields;
+  intakeEmail: string;
+}) {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

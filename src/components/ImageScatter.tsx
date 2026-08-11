@@ -1,5 +1,5 @@
 import ScatterNode from "@/components/ScatterNode";
-import { getProjectBySlug } from "@/data/projects";
+import { getProjectBySlug } from "@/lib/content/projects";
 
 type Node = { x: number; y: number; size: number };
 

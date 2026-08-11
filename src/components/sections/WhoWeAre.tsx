@@ -1,9 +1,10 @@
 import Eyebrow from "@/components/Eyebrow";
 import ImageScatter from "@/components/ImageScatter";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
-import { whoWeAre } from "@/data/about";
+import { getWhoWeAre } from "@/lib/content/about";
 
 export default function WhoWeAre() {
+  const whoWeAre = getWhoWeAre();
   return (
     <section id="who-we-are" className="px-6 md:px-10 pt-28 md:pt-36 pb-16 max-w-5xl mx-auto">
       <Reveal>
@@ -24,8 +25,11 @@ export default function WhoWeAre() {
       </RevealGroup>
 
       <Reveal delay={0.15} className="mt-8 space-y-5 max-w-3xl">
-        <p className="text-lg text-text-secondary leading-relaxed">{whoWeAre.body1}</p>
-        <p className="text-lg text-text-secondary leading-relaxed">{whoWeAre.body2}</p>
+        {whoWeAre.bodyParagraphs.map((paragraph, i) => (
+          <p key={i} className="text-lg text-text-secondary leading-relaxed">
+            {paragraph}
+          </p>
+        ))}
       </Reveal>
 
       <ImageScatter slugs={whoWeAre.scatterSlugs} />

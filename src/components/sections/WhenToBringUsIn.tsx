@@ -1,8 +1,9 @@
 import Eyebrow from "@/components/Eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
-import { whenToBringUsIn } from "@/data/about";
+import { getWhenToBringUsIn } from "@/lib/content/about";
 
 export default function WhenToBringUsIn() {
+  const whenToBringUsIn = getWhenToBringUsIn();
   return (
     <section id="when-to-bring-us-in" className="px-6 md:px-10 py-16 max-w-5xl mx-auto">
       <Reveal className="max-w-2xl">

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getProjectBySlug, projects } from "@/data/projects";
+import { getAllProjects, getProjectBySlug } from "@/lib/content/projects";
 import { withBasePath } from "@/lib/base-path";
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return getAllProjects().map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({

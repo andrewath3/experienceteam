@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { wordmark, primaryNav } from "@/data/global";
+import { getGlobalContent } from "@/lib/content/global";
 
 export default function Footer() {
+  const { wordmark, primaryNav } = getGlobalContent();
   return (
     <footer className="border-t border-border-subtle bg-background">
       <div className="mx-auto max-w-7xl px-6 md:px-10 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">

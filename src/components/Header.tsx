@@ -2,9 +2,15 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { wordmark, primaryNav } from "@/data/global";
+import type { GlobalContent } from "@/lib/content/types";
 
-export default function Header() {
+export default function Header({
+  wordmark,
+  primaryNav,
+}: {
+  wordmark: GlobalContent["wordmark"];
+  primaryNav: GlobalContent["primaryNav"];
+}) {
   const [open, setOpen] = useState(false);
 
   return (

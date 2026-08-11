@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { contactBanner, teamsUrl } from "@/data/global";
+import { getGlobalContent } from "@/lib/content/global";
 
 export default function GlobalContactBanner() {
+  const { contactBanner, teamsUrl } = getGlobalContent();
   return (
     <div className="border-t border-border-subtle bg-surface-header">
       <div className="mx-auto max-w-7xl px-6 md:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">

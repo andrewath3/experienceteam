@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import Eyebrow from "@/components/Eyebrow";
 import ContactForm from "@/components/ContactForm";
-import { contactPage } from "@/data/contact";
-import { teamsUrl } from "@/data/global";
+import { getContactFormFields, getContactPage, getIntakeEmail } from "@/lib/content/contact";
+import { getGlobalContent } from "@/lib/content/global";
 
 export const metadata: Metadata = {
   title: "Contact — Experience Team",
 };
 
 export default function ContactPage() {
+  const contactPage = getContactPage();
+  const contactFormFields = getContactFormFields();
+  const intakeEmail = getIntakeEmail();
+  const { teamsUrl } = getGlobalContent();
+
   return (
     <div className="px-6 md:px-10 max-w-2xl mx-auto pt-16 pb-24">
       <Eyebrow>{contactPage.eyebrow}</Eyebrow>
@@ -28,7 +33,7 @@ export default function ContactPage() {
       </div>
 
       <div className="mt-10">
-        <ContactForm />
+        <ContactForm contactPage={contactPage} contactFormFields={contactFormFields} intakeEmail={intakeEmail} />
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import type { Project } from "@/data/projects";
+import type { Project } from "@/lib/content/types";
 import { withBasePath } from "@/lib/base-path";
 
 export default function ScatterNode({

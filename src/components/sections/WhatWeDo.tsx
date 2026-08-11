@@ -3,9 +3,10 @@ import Eyebrow from "@/components/Eyebrow";
 import Card from "@/components/Card";
 import ImageScatter from "@/components/ImageScatter";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
-import { whatWeDo } from "@/data/about";
+import { getWhatWeDo } from "@/lib/content/about";
 
 export default function WhatWeDo() {
+  const whatWeDo = getWhatWeDo();
   return (
     <section id="what-we-do" className="px-6 md:px-10 py-16 max-w-5xl mx-auto">
       <Reveal className="max-w-2xl">

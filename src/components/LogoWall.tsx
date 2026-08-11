@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { RevealGroup, RevealItem } from "@/components/Reveal";
-import { logos } from "@/data/logos";
+import { getLogos } from "@/lib/content/logos";
 
 /**
  * No logo image assets exist yet (only project photography) — rendered as
@@ -8,6 +8,7 @@ import { logos } from "@/data/logos";
  * <Image> here once real logos are supplied.
  */
 export default function LogoWall() {
+  const logos = getLogos();
   return (
     <RevealGroup className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border-subtle">
       {logos.map((logo) => {

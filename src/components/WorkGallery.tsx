@@ -4,18 +4,25 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import FilterGroup from "@/components/FilterGroup";
-import { projects, projectTypes, type ProjectType, type BudgetBand } from "@/data/projects";
-import { workPage } from "@/data/work-page";
 import { withBasePath } from "@/lib/base-path";
+import type { Project, ProjectType, WorkPageContent } from "@/lib/content/types";
 
 type TypeFilter = "All" | ProjectType;
-type BudgetFilter = "Any" | BudgetBand;
+type BudgetFilter = WorkPageContent["budgetFilterLabels"][number];
 
 const GRID_THRESHOLD = 5;
 /** Approximate base panel width (px) used to estimate scroll position — matches the sm+ base width below. */
 const PANEL_WIDTH = 240;
 
-export default function WorkGallery() {
+export default function WorkGallery({
+  projects,
+  projectTypes,
+  workPage,
+}: {
+  projects: Project[];
+  projectTypes: readonly ProjectType[];
+  workPage: WorkPageContent;
+}) {
   const [activeType, setActiveType] = useState<TypeFilter>("All");
   const [activeBudget, setActiveBudget] = useState<BudgetFilter>("Any");
   const scrollRef = useRef<HTMLDivElement | null>(null);
