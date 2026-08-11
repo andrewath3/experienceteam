@@ -21,7 +21,7 @@
   --accent-muted: #0c8874;
   --text-secondary: #52595c;
   --border-subtle: rgba(0, 0, 0, 0.08);
-  --bg-image-opacity: 0.3;
+  --bg-image-opacity: 0.15;
 }
 
 @media (prefers-color-scheme: light) {
@@ -34,7 +34,7 @@
     --accent-muted: #0c8874;
     --text-secondary: #52595c;
     --border-subtle: rgba(0, 0, 0, 0.08);
-    --bg-image-opacity: 0.3;
+    --bg-image-opacity: 0.15;
   }
 }
 
