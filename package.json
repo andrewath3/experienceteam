@@ -5,11 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:secure": "next build && staticrypt out/* -r -d out --short -t staticrypt-template.html --template-title \"Experience Team\" --template-instructions \"Enter the password to continue.\" --template-button \"Enter\"",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "framer-motion": "^12.43.0",
+    "gray-matter": "^4.0.3",
     "next": "16.2.12",
     "react": "19.2.4",
     "react-dom": "19.2.4"
@@ -21,6 +23,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
+    "staticrypt": "^3.5.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
