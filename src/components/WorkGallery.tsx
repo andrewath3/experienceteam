@@ -6,6 +6,7 @@ import Image from "next/image";
 import FilterGroup from "@/components/FilterGroup";
 import { projects, projectTypes, type ProjectType, type BudgetBand } from "@/data/projects";
 import { workPage } from "@/data/work-page";
+import { withBasePath } from "@/lib/base-path";
 
 type TypeFilter = "All" | ProjectType;
 type BudgetFilter = "Any" | BudgetBand;
@@ -138,7 +139,7 @@ export default function WorkGallery() {
               >
                 <div className="relative h-[420px] sm:h-[520px] md:h-[620px] overflow-hidden bg-surface">
                   <Image
-                    src={project.image}
+                    src={withBasePath(project.image)}
                     alt={`${project.client} — ${project.title}`}
                     fill
                     sizes="(min-width: 1024px) 25vw, 60vw"

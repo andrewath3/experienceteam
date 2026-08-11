@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { Project } from "@/data/projects";
+import { withBasePath } from "@/lib/base-path";
 
 export default function ScatterNode({
   project,
@@ -59,7 +60,7 @@ export default function ScatterNode({
         >
           <div className="relative h-full w-full overflow-hidden rounded-full border border-border-subtle bg-background">
             <Image
-              src={project.image}
+              src={withBasePath(project.image)}
               alt={`${project.client} — ${project.title}`}
               fill
               sizes="260px"
