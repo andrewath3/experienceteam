@@ -33,7 +33,7 @@ Alternates are given where a line is doing heavy lifting. Everything else is a s
 > & creative technologists.
 
 **Accent line** *(italic, accent color)*
-> *—and we're here to help!*
+> *—and we're already on your team.
 
 **Positioning paragraph:**
 > We design and build brand experiences that live beyond the campaign — the things people can walk into, pick up, and take part in. We sit within OP and Studio, and we're available to any team at any Omnicom agency.
