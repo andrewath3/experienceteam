@@ -52,9 +52,11 @@ export function RevealGroup({
 export function RevealItem({
   children,
   className,
+  style,
 }: {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   return (
     <motion.div
@@ -63,6 +65,7 @@ export function RevealItem({
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
       }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>
