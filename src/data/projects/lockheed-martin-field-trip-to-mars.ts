@@ -6,7 +6,7 @@ export const lockheedMartinFieldTripToMars: Project = {
   title: "Field Trip to Mars",
   descriptor: null,
   type: "Activations & Installations",
-  budget: null,
+  budget: "Medium", // TODO: placeholder default — needs real budget band
   budgetRange: null,
   description: null,
   credits: { partner: "Framestore" },

@@ -6,7 +6,7 @@ export const stateStreetLoudestBell: Project = {
   title: "The Loudest Bell",
   descriptor: null,
   type: "Activations & Installations",
-  budget: null,
+  budget: "Medium", // TODO: placeholder default — needs real budget band
   budgetRange: null,
   description: null,
   credits: null,
