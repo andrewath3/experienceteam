@@ -9,6 +9,33 @@
   --accent-muted: #2fc7a8;
   --text-secondary: #c7cbce;
   --border-subtle: rgba(255, 255, 255, 0.08);
+  --bg-image-opacity: 1;
+}
+
+:root[data-theme="light"] {
+  --background: #f7f7f5;
+  --foreground: #14181a;
+  --surface: #ffffff;
+  --surface-header: #f0f2f2;
+  --accent: #0f9e86;
+  --accent-muted: #0c8874;
+  --text-secondary: #52595c;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --bg-image-opacity: 0.3;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --background: #f7f7f5;
+    --foreground: #14181a;
+    --surface: #ffffff;
+    --surface-header: #f0f2f2;
+    --accent: #0f9e86;
+    --accent-muted: #0c8874;
+    --text-secondary: #52595c;
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    --bg-image-opacity: 0.3;
+  }
 }
 
 @theme inline {
@@ -28,13 +55,23 @@ html {
 }
 
 body {
+  position: relative;
   background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background-image: var(--bg-image-url);
   background-position: top center;
   background-repeat: repeat-y;
   background-size: 100% auto;
-  color: var(--foreground);
-  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  opacity: var(--bg-image-opacity);
+  pointer-events: none;
 }
 
 ::selection {

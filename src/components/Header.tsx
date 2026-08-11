@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { wordmark, primaryNav } from "@/data/global";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -20,22 +21,26 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <ThemeToggle />
         </nav>
 
-        <button
-          className="sm:hidden text-foreground"
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M4 6h16M4 12h16M4 18h16"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+        <div className="flex items-center gap-2 sm:hidden">
+          <ThemeToggle />
+          <button
+            className="text-foreground"
+            aria-label="Toggle menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 6h16M4 12h16M4 18h16"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {open && (
