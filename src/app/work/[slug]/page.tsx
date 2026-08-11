@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/data/projects";
+import { withBasePath } from "@/lib/base-path";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -67,7 +68,7 @@ export default async function ProjectPage({
 
       <div className="relative mt-10 aspect-[16/10] overflow-hidden rounded-xl bg-surface">
         <Image
-          src={project.image}
+          src={withBasePath(project.image)}
           alt={`${project.client} — ${project.title}`}
           fill
           sizes="(min-width: 1024px) 900px, 100vw"

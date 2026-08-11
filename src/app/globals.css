@@ -28,7 +28,10 @@ html {
 }
 
 body {
-  background: var(--background) url("/site-bg.svg") top center repeat-y;
+  background-color: var(--background);
+  background-image: var(--bg-image-url);
+  background-position: top center;
+  background-repeat: repeat-y;
   background-size: 100% auto;
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
