@@ -6,7 +6,7 @@ export const annoveraWebsiteCompanionApp: Project = {
   title: "Website & Companion App",
   descriptor: null,
   type: "Platforms & Products",
-  budget: null,
+  budget: "Medium", // TODO: placeholder default — needs real budget band
   budgetRange: null,
   description: null,
   credits: null,

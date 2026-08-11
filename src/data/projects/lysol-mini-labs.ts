@@ -6,7 +6,7 @@ export const lysolMiniLabs: Project = {
   title: "Mini Labs",
   descriptor: null,
   type: "Digital Campaign Extensions",
-  budget: null,
+  budget: "Medium", // TODO: placeholder default — needs real budget band
   budgetRange: null,
   description: null,
   credits: null,

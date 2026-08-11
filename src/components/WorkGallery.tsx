@@ -10,9 +10,14 @@ import { workPage } from "@/data/work-page";
 type TypeFilter = "All" | ProjectType;
 type BudgetFilter = "Any" | BudgetBand;
 
-const GRID_THRESHOLD = 5;
 /** Approximate base panel width (px) used to estimate scroll position — matches the sm+ base width below. */
 const PANEL_WIDTH = 240;
+
+const BUDGET_LABELS: Record<BudgetBand, string> = {
+  Low: "Low budget",
+  Medium: "Med budget",
+  High: "High budget",
+};
 
 export default function WorkGallery() {
   const [activeType, setActiveType] = useState<TypeFilter>("All");
@@ -28,12 +33,11 @@ export default function WorkGallery() {
     return typeMatch && budgetMatch;
   });
 
-  const useGrid = filtered.length > 0 && filtered.length <= GRID_THRESHOLD;
   const total = filtered.length;
 
   useEffect(() => {
     const el = scrollRef.current;
-    if (!el || useGrid) return;
+    if (!el) return;
 
     const update = () => {
       const start = Math.round(el.scrollLeft / PANEL_WIDTH) + 1;
@@ -51,7 +55,7 @@ export default function WorkGallery() {
       el.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };
-  }, [total, useGrid, activeType, activeBudget]);
+  }, [total, activeType, activeBudget]);
 
   const scrollByPage = (direction: 1 | -1) => {
     const el = scrollRef.current;
@@ -98,35 +102,8 @@ export default function WorkGallery() {
         </div>
       )}
 
-      {/* Grid fallback for small result sets */}
-      {useGrid && (
-        <div className="px-6 md:px-10 max-w-6xl mx-auto mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((project) => (
-            <Link
-              key={project.slug}
-              href={`/work/${project.slug}`}
-              className="group relative overflow-hidden rounded-xl border border-border-subtle bg-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
-            >
-              <div className="relative aspect-[4/5] overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={`${project.client} — ${project.title}`}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-5">
-                <p className="font-bold text-foreground">{project.client}</p>
-                <p className="text-accent">{project.title}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
-
       {/* Horizontal scroll gallery */}
-      {!useGrid && total > 0 && (
+      {total > 0 && (
         <div className="mt-10">
           <div className="px-6 md:px-10 max-w-6xl mx-auto flex items-center justify-between mb-3">
             <p className="text-sm font-semibold text-text-secondary tabular-nums">
@@ -175,11 +152,13 @@ export default function WorkGallery() {
                   <p className="text-xs md:text-sm text-accent whitespace-nowrap overflow-hidden text-ellipsis">
                     {project.title}
                   </p>
-                  {project.budgetRange && (
-                    <p className="mt-1 text-xs text-text-secondary whitespace-nowrap overflow-hidden text-ellipsis">
-                      {project.budgetRange}
-                    </p>
-                  )}
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    {project.budget && (
+                      <span className="rounded-full border border-accent/30 bg-surface px-2.5 py-0.5 text-[11px] font-semibold whitespace-nowrap text-foreground">
+                        {BUDGET_LABELS[project.budget]}
+                      </span>
+                    )}
+                  </div>
                   <p className="mt-1 min-h-[1rem] text-xs text-text-secondary whitespace-nowrap overflow-hidden text-ellipsis">
                     {project.awards.length > 0 ? project.awards.join(" · ") : ""}
                   </p>

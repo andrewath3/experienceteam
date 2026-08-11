@@ -6,7 +6,7 @@ export const mucinexMonstersInWaiting: Project = {
   title: "Monsters in Waiting",
   descriptor: null,
   type: "Digital Campaign Extensions",
-  budget: null,
+  budget: "Medium", // TODO: placeholder default — needs real budget band
   budgetRange: null,
   description: null,
   credits: null,

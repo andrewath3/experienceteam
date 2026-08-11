@@ -30,6 +30,25 @@ export default async function ProjectPage({
 
   const showBudget = true; // toggle per open decision — default: show budget band on detail page
 
+  const placeholderSections = [
+    {
+      heading: "The Challenge",
+      body: "Placeholder — a short paragraph framing the client's problem or opportunity goes here.",
+    },
+    {
+      heading: "The Approach",
+      body: "Placeholder — a short paragraph on the strategy and creative approach goes here.",
+    },
+    {
+      heading: "The Work",
+      body: "Placeholder — a short paragraph walking through what was built or produced goes here.",
+    },
+    {
+      heading: "The Results",
+      body: "Placeholder — a short paragraph on outcomes and impact goes here.",
+    },
+  ];
+
   return (
     <div className="px-6 md:px-10 max-w-4xl mx-auto pt-12 pb-24">
       <Link href="/work" className="text-sm text-text-secondary hover:text-foreground transition-colors">
@@ -84,6 +103,20 @@ export default async function ProjectPage({
             Project description coming soon.
           </p>
         )}
+      </div>
+
+      <div className="mt-16 max-w-2xl space-y-16">
+        {placeholderSections.map((section, i) => (
+          <div key={section.heading}>
+            <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight">{section.heading}</h2>
+            <p className="mt-3 italic text-text-secondary/70 leading-relaxed">{section.body}</p>
+            {i < placeholderSections.length - 1 && (
+              <div className="mt-8 flex items-center justify-center rounded-xl border border-dashed border-border-subtle bg-surface aspect-[16/9] text-sm text-text-secondary/60">
+                Image placeholder
+              </div>
+            )}
+          </div>
+        ))}
       </div>
 
       {(project.credits?.partner || project.credits?.role || project.credits?.year) && (
