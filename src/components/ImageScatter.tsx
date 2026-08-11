@@ -1,5 +1,9 @@
+"use client";
+
+import { motion, useTransform } from "framer-motion";
 import ScatterNode from "@/components/ScatterNode";
 import { getProjectBySlug } from "@/data/projects";
+import { useFloatOffset } from "@/lib/use-float";
 
 type Node = { x: number; y: number; size: number };
 
@@ -21,6 +25,27 @@ function layoutFor(count: number): Node[] {
   }));
 }
 
+/**
+ * A connector line whose endpoints drift with the same per-index float
+ * used on the nodes, so lines and bubbles read as part of one floating
+ * cluster rather than a static connector between moving dots.
+ */
+function FloatingLine({ prev, prevIndex, node, index }: { prev: Node; prevIndex: number; node: Node; index: number }) {
+  const a = useFloatOffset(prevIndex, 1.1, 1.4);
+  const b = useFloatOffset(index, 1.1, 1.4);
+
+  return (
+    <motion.line
+      x1={useTransform(a.dx, (v) => prev.x + v)}
+      y1={useTransform(a.dy, (v) => prev.y + v)}
+      x2={useTransform(b.dx, (v) => node.x + v)}
+      y2={useTransform(b.dy, (v) => node.y + v)}
+      stroke="var(--accent)"
+      strokeWidth="0.3"
+    />
+  );
+}
+
 export default function ImageScatter({ slugs }: { slugs: string[] }) {
   const items = slugs.map((slug) => getProjectBySlug(slug)).filter((p): p is NonNullable<typeof p> => !!p);
   const nodes = layoutFor(items.length);
@@ -33,20 +58,9 @@ export default function ImageScatter({ slugs }: { slugs: string[] }) {
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        {nodes.slice(1).map((node, i) => {
-          const prev = nodes[i];
-          return (
-            <line
-              key={i}
-              x1={prev.x}
-              y1={prev.y}
-              x2={node.x}
-              y2={node.y}
-              stroke="var(--accent)"
-              strokeWidth="0.3"
-            />
-          );
-        })}
+        {nodes.slice(1).map((node, i) => (
+          <FloatingLine key={i} prev={nodes[i]} prevIndex={i} node={node} index={i + 1} />
+        ))}
       </svg>
 
       {items.map((project, i) => {
