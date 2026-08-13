@@ -24,20 +24,6 @@
   --bg-image-opacity: 0.15;
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme]) {
-    --background: #f7f7f5;
-    --foreground: #14181a;
-    --surface: #ffffff;
-    --surface-header: #f0f2f2;
-    --accent: #0f9e86;
-    --accent-muted: #0c8874;
-    --text-secondary: #52595c;
-    --border-subtle: rgba(0, 0, 0, 0.08);
-    --bg-image-opacity: 0.15;
-  }
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

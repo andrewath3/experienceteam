@@ -27,8 +27,7 @@ Alternates are given where a line is doing heavy lifting. Everything else is a s
 **Eyebrow:** WHO WE ARE
 
 **Headline:**
-> We are a team of
-> experiential producers,
+> Experiential producers,
 > user-centered designers,
 > & creative technologists.
 
