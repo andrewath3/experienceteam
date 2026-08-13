@@ -15,7 +15,7 @@ export const whoWeAre = {
     "user-centered designers,",
     "& creative technologists.",
   ],
-  accentLine: "—and we're already on your team!",
+  accentLine: "—and we're already on your team.",
   body1:
     "We design and build brand experiences that live beyond the campaign — the things people can walk into, pick up, and take part in. We sit within OP and Studio, and we're available to any team at any Omnicom agency.",
   body2:
