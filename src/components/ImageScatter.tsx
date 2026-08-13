@@ -9,10 +9,10 @@ type Node = { x: number; y: number; size: number };
 
 /** Percentage-based positions so nodes and connector lines scale together. */
 const PRESET_4: Node[] = [
-  { x: 16, y: 72, size: 190 },
-  { x: 46, y: 24, size: 150 },
-  { x: 72, y: 68, size: 210 },
-  { x: 90, y: 20, size: 140 },
+  { x: 16, y: 72, size: 238 },
+  { x: 46, y: 24, size: 188 },
+  { x: 72, y: 68, size: 263 },
+  { x: 90, y: 20, size: 175 },
 ];
 
 function layoutFor(count: number): Node[] {
@@ -21,7 +21,7 @@ function layoutFor(count: number): Node[] {
   return Array.from({ length: count }, (_, i) => ({
     x: (100 / (count + 1)) * (i + 1),
     y: 45 + (i % 2 === 0 ? 25 : -25),
-    size: 160,
+    size: 200,
   }));
 }
 

@@ -14,7 +14,7 @@ export function useFloatOffset(index: number, ampX: number, ampY: number) {
 
   useEffect(() => {
     const controls = animate(t, Math.PI * 2, {
-      duration: 10 + (index % 4) * 2.5,
+      duration: 8 + (index % 4) * 2,
       repeat: Infinity,
       ease: "linear",
     });

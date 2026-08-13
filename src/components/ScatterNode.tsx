@@ -72,7 +72,7 @@ export default function ScatterNode({
                 className="object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-background/0 opacity-0 transition-all duration-300 group-hover:bg-background/60 group-hover:opacity-100">
-                <span className="text-xs font-bold uppercase tracking-wide text-accent">View Work</span>
+                <span className="text-xs font-bold uppercase tracking-wide text-accent">View Project</span>
               </div>
             </div>
           </Link>
