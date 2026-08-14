@@ -34,7 +34,7 @@ export type Capability = {
 
 export const whatWeDo = {
   eyebrow: "WHAT",
-  headline: "We design, build, and launch",
+  headline: "We design, build, and launch.",
   accentLine: "—from pop-ups to digital platforms.",
   intro:
     "Audiences don't just want to be talked to. The work that stands out gives them something to do, and it keeps working long after the campaign ends.",
