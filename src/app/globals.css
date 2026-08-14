@@ -10,6 +10,7 @@
   --text-secondary: #c7cbce;
   --border-subtle: rgba(255, 255, 255, 0.08);
   --bg-image-opacity: 0.5;
+  --orb-bg-opacity: 1;
 }
 
 :root[data-theme="light"] {
@@ -22,6 +23,7 @@
   --text-secondary: #52595c;
   --border-subtle: rgba(0, 0, 0, 0.08);
   --bg-image-opacity: 0.15;
+  --orb-bg-opacity: 0.6;
 }
 
 @theme inline {
@@ -57,6 +59,7 @@ body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
+/* "Graphic lines" background — hidden by default, shown via the header toggle. */
 body::before {
   content: "";
   position: absolute;
@@ -66,8 +69,54 @@ body::before {
   background-position: top center;
   background-repeat: repeat-y;
   background-size: 100% auto;
-  opacity: var(--bg-image-opacity);
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+:root[data-bg="lines"] body::before {
+  opacity: var(--bg-image-opacity);
+}
+
+/* "Floating light" background — slow-drifting blurred orbs, default. */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--orb-bg-opacity);
+  transition: opacity 0.4s ease;
+}
+
+:root[data-bg="lines"] .bg-orbs {
+  opacity: 0;
+}
+
+.orb-field-ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 32%,
+    rgba(180, 176, 168, 0.32),
+    rgba(150, 146, 138, 0.14) 45%,
+    rgba(120, 116, 108, 0) 72%
+  );
+  filter: blur(38px);
+  will-change: transform;
+  mix-blend-mode: screen;
+}
+
+:root[data-theme="light"] .orb-field-ball {
+  background: radial-gradient(
+    circle at 35% 32%,
+    rgba(20, 24, 26, 0.16),
+    rgba(20, 24, 26, 0.08) 45%,
+    rgba(20, 24, 26, 0) 72%
+  );
+  mix-blend-mode: multiply;
 }
 
 ::selection {
