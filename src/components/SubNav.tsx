@@ -28,7 +28,7 @@ export default function SubNav({ links }: { links: { label: string; hash: string
 
   return (
     <nav className="sticky top-16 z-40 border-b border-border-subtle bg-background/90 backdrop-blur">
-      <div className="mx-auto max-w-6xl px-6 md:px-10 py-3 flex flex-wrap justify-center gap-x-6 gap-y-1 text-xs font-semibold uppercase tracking-[0.1em] text-text-secondary">
+      <div className="mx-auto max-w-6xl px-6 md:px-10 flex flex-wrap justify-center items-stretch gap-x-6 gap-y-1 text-xs font-semibold uppercase tracking-[0.1em] text-text-secondary">
         {links.map((link) => {
           const isActive = link.hash === activeHash;
           return (
@@ -36,8 +36,8 @@ export default function SubNav({ links }: { links: { label: string; hash: string
               key={link.hash}
               href={`#${link.hash}`}
               aria-current={isActive ? "true" : undefined}
-              className={`transition-colors hover:text-accent ${
-                isActive ? "text-accent font-semibold underline underline-offset-4" : ""
+              className={`flex items-center px-3 py-3 transition-colors hover:text-accent ${
+                isActive ? "bg-foreground/5 text-accent font-semibold" : ""
               }`}
             >
               {link.label}
