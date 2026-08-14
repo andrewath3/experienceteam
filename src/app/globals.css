@@ -11,6 +11,7 @@
   --border-subtle: rgba(255, 255, 255, 0.08);
   --bg-image-opacity: 0.5;
   --orb-bg-opacity: 1;
+  --footer-bg: #000000;
 }
 
 :root[data-theme="light"] {
@@ -18,12 +19,13 @@
   --foreground: #14181a;
   --surface: #ffffff;
   --surface-header: #f0f2f2;
-  --accent: #0f9e86;
-  --accent-muted: #0c8874;
+  --accent: #2563eb;
+  --accent-muted: #1d4ed8;
   --text-secondary: #52595c;
   --border-subtle: rgba(0, 0, 0, 0.08);
   --bg-image-opacity: 0.15;
-  --orb-bg-opacity: 0.6;
+  --orb-bg-opacity: 0.9;
+  --footer-bg: #f0f2f2;
 }
 
 @theme inline {
@@ -31,6 +33,7 @@
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
   --color-surface-header: var(--surface-header);
+  --color-footer-bg: var(--footer-bg);
   --color-accent: var(--accent);
   --color-accent-muted: var(--accent-muted);
   --color-text-secondary: var(--text-secondary);
@@ -112,9 +115,9 @@ body::before {
 :root[data-theme="light"] .orb-field-ball {
   background: radial-gradient(
     circle at 35% 32%,
-    rgba(20, 24, 26, 0.16),
-    rgba(20, 24, 26, 0.08) 45%,
-    rgba(20, 24, 26, 0) 72%
+    rgba(37, 99, 235, 0.32),
+    rgba(37, 99, 235, 0.15) 45%,
+    rgba(37, 99, 235, 0) 72%
   );
   mix-blend-mode: multiply;
 }

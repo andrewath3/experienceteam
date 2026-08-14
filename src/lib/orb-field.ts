@@ -21,7 +21,7 @@ const DEFAULTS: Required<OrbFieldOptions> = {
   count: 4,
   minRadius: 88,
   maxRadius: 188,
-  speed: 6, // px/sec at full speed
+  speed: 26, // px/sec at full speed
 };
 
 export function createOrbField(container: HTMLElement, options: OrbFieldOptions = {}) {

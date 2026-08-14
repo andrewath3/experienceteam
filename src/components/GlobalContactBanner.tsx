@@ -4,7 +4,7 @@ import { contactBanner, teamsUrl } from "@/data/global";
 
 export default function GlobalContactBanner() {
   return (
-    <div className="border-t border-border-subtle bg-black">
+    <div className="border-t border-border-subtle bg-footer-bg">
       <div className="mx-auto max-w-6xl px-6 md:px-10 py-16">
         <Eyebrow>{contactBanner.eyebrow}</Eyebrow>
         <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">

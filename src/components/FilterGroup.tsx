@@ -46,7 +46,7 @@ export default function FilterGroup<T extends string>({
 
   return (
     <div className={`relative ${className ?? ""}`}>
-      <p className="mb-2 text-xs font-bold tracking-[0.15em] uppercase text-accent-muted">{label}</p>
+      <p className="mb-2 text-xs font-bold tracking-[0.15em] uppercase text-foreground">{label}</p>
 
       {/* Always rendered (for measurement); hidden out of flow once it wraps. */}
       <div
