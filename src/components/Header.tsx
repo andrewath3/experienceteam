@@ -18,7 +18,7 @@ export default function Header() {
           {wordmark}
         </Link>
 
-        <nav className="hidden sm:flex items-center gap-8 text-xs font-semibold tracking-[0.1em] uppercase text-text-secondary">
+        <nav className="hidden sm:flex h-full items-stretch gap-8 text-xs font-semibold tracking-[0.1em] uppercase text-text-secondary">
           {primaryNav.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -26,8 +26,8 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`transition-colors hover:text-accent ${
-                  isActive ? "text-accent underline underline-offset-4" : ""
+                className={`flex items-center px-3 transition-colors hover:text-accent ${
+                  isActive ? "bg-foreground/5 text-accent" : ""
                 }`}
               >
                 {link.label}
@@ -68,8 +68,8 @@ export default function Header() {
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 onClick={() => setOpen(false)}
-                className={`transition-colors hover:text-accent ${
-                  isActive ? "text-accent underline underline-offset-4" : ""
+                className={`px-3 py-1.5 transition-colors hover:text-accent ${
+                  isActive ? "bg-foreground/5 text-accent" : ""
                 }`}
               >
                 {link.label}
