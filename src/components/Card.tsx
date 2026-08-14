@@ -24,7 +24,7 @@ export default function Card({
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3
-            className={`text-lg md:text-xl font-extrabold tracking-tight ${
+            className={`text-[1.35rem] md:text-2xl font-semibold tracking-tight ${
               highlight ? "text-accent" : "text-accent-muted"
             }`}
           >

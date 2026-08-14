@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #181818;
+  --background: #0d0e11;
   --foreground: #ededed;
   --surface: #101b22;
   --surface-header: #0d1620;
@@ -9,7 +9,7 @@
   --accent-muted: #2fc7a8;
   --text-secondary: #c7cbce;
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --bg-image-opacity: 1;
+  --bg-image-opacity: 0.5;
 }
 
 :root[data-theme="light"] {
@@ -22,20 +22,6 @@
   --text-secondary: #52595c;
   --border-subtle: rgba(0, 0, 0, 0.08);
   --bg-image-opacity: 0.15;
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme]) {
-    --background: #f7f7f5;
-    --foreground: #14181a;
-    --surface: #ffffff;
-    --surface-header: #f0f2f2;
-    --accent: #0f9e86;
-    --accent-muted: #0c8874;
-    --text-secondary: #52595c;
-    --border-subtle: rgba(0, 0, 0, 0.08);
-    --bg-image-opacity: 0.15;
-  }
 }
 
 @theme inline {
@@ -52,6 +38,16 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Client logo marks in public/logos are white-on-transparent (dark-mode
+   artwork) — invert to black in light mode. */
+.logo-mark {
+  filter: invert(0);
+}
+
+:root[data-theme="light"] .logo-mark {
+  filter: invert(1);
 }
 
 body {
@@ -91,4 +87,9 @@ body::before {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Work gallery: hovering a card desaturates and blurs the rest of the row. */
+.work-gallery-row:hover a:not(:hover) .work-thumb {
+  filter: blur(1.5px);
 }

@@ -1,38 +1,61 @@
+import Image from "next/image";
 import Link from "next/link";
 import { RevealGroup, RevealItem } from "@/components/Reveal";
 import { logos } from "@/data/logos";
 
 /**
- * No logo image assets exist yet (only project photography) — rendered as
- * muted wordmark tiles. Swap in `/public/images/logos/<slug>.svg` and an
- * <Image> here once real logos are supplied.
+ * Logo artwork in `public/logos` is white-on-transparent (built for dark
+ * mode), so it's inverted to black in light mode via `[data-theme="light"]`.
+ * Clients without an asset yet fall back to a styled wordmark tile.
  */
 export default function LogoWall() {
   return (
-    <RevealGroup className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border-subtle">
-      {logos.map((logo) => {
-        const tile = (
-          <div className="flex h-24 items-center justify-center bg-background px-4 text-center transition-colors hover:bg-surface/60">
-            <span className="text-sm font-semibold tracking-wide text-text-secondary/70 grayscale">
-              {logo.name}
-            </span>
-          </div>
-        );
-        return (
-          <RevealItem key={logo.name}>
-            {logo.projectSlug ? (
-              <Link
-                href={`/work/${logo.projectSlug}`}
-                className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
-              >
-                {tile}
-              </Link>
-            ) : (
-              tile
-            )}
-          </RevealItem>
-        );
-      })}
-    </RevealGroup>
+    <div>
+      <RevealGroup className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-4 sm:gap-x-12 sm:gap-y-16">
+        {logos.map((logo) => {
+          const tile = (
+            <div className="flex h-32 items-center justify-center px-4 text-center">
+              {logo.src ? (
+                <div className="relative h-[4.8rem] w-full max-w-[11.2rem]">
+                  <Image
+                    src={logo.src}
+                    alt={logo.name}
+                    fill
+                    sizes="180px"
+                    className="logo-mark object-contain opacity-60"
+                  />
+                </div>
+              ) : (
+                <span className="text-2xl font-semibold tracking-wide text-text-secondary/60 grayscale">
+                  {logo.name}
+                </span>
+              )}
+            </div>
+          );
+          return (
+            <RevealItem key={logo.name}>
+              {logo.projectSlug ? (
+                <Link
+                  href={`/work/${logo.projectSlug}`}
+                  className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+                >
+                  {tile}
+                </Link>
+              ) : (
+                tile
+              )}
+            </RevealItem>
+          );
+        })}
+      </RevealGroup>
+      <div className="mt-12 flex justify-center">
+        <Link
+          href="/work"
+          className="rounded-full border border-accent/40 px-6 py-3 text-sm font-bold text-accent hover:border-accent transition-colors"
+        >
+          See our work
+        </Link>
+      </div>
+    </div>
   );
 }

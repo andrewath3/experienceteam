@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, animate } from "framer-motion";
 import type { Project } from "@/data/projects";
 import { withBasePath } from "@/lib/base-path";
 import { useFloatOffset } from "@/lib/use-float";
@@ -26,8 +26,13 @@ export default function ScatterNode({
 
   // Vary drift per node so the cluster doesn't move in lockstep.
   const amplitude = 8 + (index % 3) * 5;
-  const direction = index % 2 === 0 ? 1 : -1;
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [-amplitude * direction, amplitude * direction]);
+  const parallaxDir = index % 2 === 0 ? 1 : -1;
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [-amplitude * parallaxDir, amplitude * parallaxDir]);
+
+  // Hover offset merges with the scroll parallax so both can drive the same y transform.
+  const hoverY = useMotionValue(0);
+  const combinedY = useTransform([parallaxY, hoverY], ([p, h]) => (p as number) + (h as number));
+  const hoverTransition = { type: "spring" as const, stiffness: 220, damping: 22 };
 
   // Gentle idle drift so the whole node (ring + photo) reads as floating.
   const { dx: floatX, dy: floatY } = useFloatOffset(index, 5, 7);
@@ -50,14 +55,14 @@ export default function ScatterNode({
       }}
     >
       {/* Idle float layer: drifts the ring + photo together; hover/click below is untouched. */}
-      <motion.div style={{ x: floatX, y: floatY }} className="relative h-full w-full">
-        <div className="absolute inset-0 rounded-full border border-accent/40" />
+      <motion.div style={{ x: floatX, y: floatY }} className="group relative h-full w-full">
+        <div className="absolute inset-0 rounded-full border border-accent/40 transition-colors duration-300 group-hover:bg-accent" />
 
         <motion.div
-          style={{ y: parallaxY }}
-          whileHover={{ x: 10 }}
-          transition={{ type: "spring", stiffness: 220, damping: 22 }}
-          className="group relative h-full w-full"
+          style={{ y: combinedY }}
+          onHoverStart={() => animate(hoverY, -10, hoverTransition)}
+          onHoverEnd={() => animate(hoverY, 0, hoverTransition)}
+          className="relative h-full w-full"
         >
           <Link
             href={`/work/${project.slug}`}
@@ -72,7 +77,7 @@ export default function ScatterNode({
                 className="object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-background/0 opacity-0 transition-all duration-300 group-hover:bg-background/60 group-hover:opacity-100">
-                <span className="text-xs font-bold uppercase tracking-wide text-accent">View Work</span>
+                <span className="text-xs font-bold uppercase tracking-wide text-accent">View Project</span>
               </div>
             </div>
           </Link>

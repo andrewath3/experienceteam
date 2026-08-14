@@ -1,25 +1,22 @@
 export const subNav = [
-  { label: "Who we are", hash: "who-we-are" },
-  { label: "What we do", hash: "what-we-do" },
-  { label: "When to bring us in", hash: "when-to-bring-us-in" },
+  { label: "Who", hash: "who-we-are" },
+  { label: "What", hash: "what-we-do" },
+  { label: "When", hash: "when-to-bring-us-in" },
+  { label: "Clients", hash: "who-weve-worked-with" },
 ];
 
 export const metaDescription =
   "A team of experiential producers, user-centered designers, and creative technologists, building brand experiences across Omnicom.";
 
 export const whoWeAre = {
-  eyebrow: "WHO WE ARE",
+  eyebrow: "WHO",
   headlineLines: [
-    "We are a team of",
-    "experiential producers,",
+    "We are experiential producers,",
     "user-centered designers,",
     "& creative technologists.",
   ],
-  accentLine: "—and we're already on your team!",
-  body1:
-    "We design and build brand experiences that live beyond the campaign — the things people can walk into, pick up, and take part in. We sit within OP and Studio, and we're available to any team at any Omnicom agency.",
-  body2:
-    "Strategy, design, and build all sit on one team, so you're not stitching three vendors together and hoping they talk to each other. We plug into how you already work — early, late, or somewhere in the messy middle.",
+  accentLine: "—and we're already on your team.",
+  body: "We sit within OP and Studio, and we work with any team at any Omnicom agency. Strategy, design, and build all sit on one team, working to one plan.",
   /** Project slugs shown in the first image scatter, offset/varying sizes. */
   scatterSlugs: [
     "state-street-fearless-girl",
@@ -30,45 +27,39 @@ export const whoWeAre = {
 };
 
 export type Capability = {
-  number: string;
-  verb: string;
   category: string;
+  purpose: string;
   body: string;
 };
 
 export const whatWeDo = {
-  eyebrow: "WHAT WE DO",
-  headline:
-    "We design, build, and produce brand experiences that reach audiences beyond the campaign, no matter the format.",
+  eyebrow: "WHAT",
+  headline: "We design, build, and launch",
+  accentLine: "—from pop-ups to digital platforms.",
   intro:
-    "Audiences don't just want to be talked to anymore. The work that stands out gives them something to do. That's what we take on — from a single interactive moment inside a bigger campaign through to a full build that lives on long after the flight ends.",
+    "Audiences don't just want to be talked to. The work that stands out gives them something to do, and it keeps working long after the campaign ends.",
   capabilities: [
     {
-      number: "01",
-      verb: "Take a campaign further than the ad",
       category: "Digital campaign extensions",
+      purpose: "Take a campaign further than the ad",
       body: "Microsites, companion apps, social integrations, and digital extensions that give a campaign somewhere to go once someone's actually interested.",
     },
     {
-      number: "02",
-      verb: "Put something real in the world",
       category: "Activations and installations",
+      purpose: "Put something real in the world",
       body: "Physical builds, branded environments, and live moments — designed, engineered, and produced end to end, including the parts nobody wants to think about until week three.",
     },
     {
-      number: "03",
-      verb: "Make the audience part of it",
       category: "Interactive experiences",
+      purpose: "Make the audience part of it",
       body: "Interactive tech, AI-driven moments, immersive environments, and hands-on experiences that turn viewers into participants.",
     },
     {
-      number: "04",
-      verb: "Build something that lasts",
       category: "Platforms and products",
-      body: "Websites, tools, and digital products with real architecture behind them, built to be maintained rather than just launched.",
+      purpose: "Build something that lasts",
+      body: "Websites, tools, brand portals, and digital products with real architecture behind them, built to be maintained over time.",
     },
   ] satisfies Capability[],
-  workPointer: "See what this looks like in practice",
   /** Project slugs shown in the second image scatter. */
   scatterSlugs: [
     "lockheed-martin-field-trip-to-mars",
@@ -79,7 +70,7 @@ export const whatWeDo = {
 };
 
 export const whenToBringUsIn = {
-  eyebrow: "WHEN TO BRING US IN",
+  eyebrow: "WHEN",
   headline:
     "We work best when we're brought in early, so we can help shape what's possible before the brief is set.",
   stages: [
@@ -88,12 +79,14 @@ export const whenToBringUsIn = {
     { label: "CONCEPTING", question: "Can it be built — and for how much?" },
     { label: "READY TO BUILD", question: "Who's going to make this?" },
   ],
-  closing:
-    "If you're asking any of these, ask us. The earlier we're in, the more we can shape what's possible — but there's no wrong time to get in touch.",
-  budgetLine:
-    "Not sure whether your budget matches the idea? Ask early — that's a quick conversation, and much better to have now than after a client has seen a concept.",
+  closingParagraphs: [
+    "If you have any questions like these, ask us — there's no wrong time to get in touch.",
+    "Not sure the budget matches the idea? That's a quick conversation, and better now than after a client's seen a concept.",
+    "Still sending brand guidelines around as a PDF? We turn those into portals people actually use.",
+    "Solving problems is a lot of what we do.",
+  ],
 };
 
 export const whoWeveWorkedWith = {
-  eyebrow: "WHO WE'VE WORKED WITH",
+  eyebrow: "CLIENTS",
 };

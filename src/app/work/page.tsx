@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="pt-8 pb-24">
+    <div className="flex h-[calc(100dvh-4rem)] flex-col pt-8">
       <WorkGallery />
     </div>
   );

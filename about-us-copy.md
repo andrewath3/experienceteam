@@ -2,8 +2,6 @@
 
 Single scrolling page with three anchored sections, plus a client logo wall and a global contact banner. Sub-nav jumps between anchors.
 
-Alternates are given where a line is doing heavy lifting. Everything else is a single recommendation.
-
 **Voice check:** headlines start with "We" or "Our," run as one flowing sentence across multiple lines of large type, and stay warm rather than sharp. No fragments, no setup-then-payoff constructions. Sentence case throughout except eyebrows.
 
 ---
@@ -26,25 +24,19 @@ Alternates are given where a line is doing heavy lifting. Everything else is a s
 
 **Eyebrow:** WHO WE ARE
 
-**Headline:**
-> We are a team of
-> experiential producers,
+**H1:**
+> Experiential producers,
 > user-centered designers,
 > & creative technologists.
 
 **Accent line** *(italic, accent color)*
-> *—and we're already on your team.
+> *—and we're already on your team.*
 
-**Positioning paragraph:**
-> We design and build brand experiences that live beyond the campaign — the things people can walk into, pick up, and take part in. We sit within OP and Studio, and we're available to any team at any Omnicom agency.
+**P1:**
+> We sit within OP and Studio, and we work with any team at any Omnicom agency.
 
-*Alt:* We make brand ideas real, in the physical world and the digital one. We sit within OP and Studio, and any team at any Omnicom agency can work with us.
-
-**Working-style paragraph:**
-> Strategy, design, and build all sit on one team, so you're not stitching three vendors together and hoping they talk to each other. We plug into how you already work — early, late, or somewhere in the messy middle.
-
-**Optional at-a-glance row** *(needs your numbers — see open items)*
-> [X] people across three disciplines · [X] years building experiences · Clients across [X] Omnicom agencies · One team from idea to install
+**P2:**
+> Strategy, design, and build all sit on one team, so there's one conversation instead of three, and nothing gets lost in between.
 
 ---
 
@@ -56,36 +48,31 @@ Alternates are given where a line is doing heavy lifting. Everything else is a s
 
 **Eyebrow:** WHAT WE DO
 
-**Headline:**
-> We design, build, and produce brand experiences that reach audiences beyond the campaign, no matter the format.
+**H1:**
+> From a pop-up to a digital platform, we design it, build it, and launch it.
 
-*Alt:* We create experiences that bring brands into the physical and digital world through moments people can take part in.
-
-**Intro paragraph:**
-> Audiences don't just want to be talked to anymore. The work that stands out gives them something to do. That's what we take on — from a single interactive moment inside a bigger campaign through to a full build that lives on long after the flight ends.
+**P1:**
+> Audiences don't just want to be talked to. The work that stands out gives them something to do, and it keeps working long after the campaign ends.
 
 ### The four capabilities
 
-These four should be the exact filter labels on the Work page, so the categories double as navigation.
+Category name is the heading; purpose line sits beneath it as a subhead. These four category names should be the exact filter labels on the Work page, so the categories double as navigation.
 
-**01 — Take a campaign further than the ad**
-*Digital campaign extensions*
+**Digital campaign extensions**
+*Take a campaign further than the ad*
 > Microsites, companion apps, social integrations, and digital extensions that give a campaign somewhere to go once someone's actually interested.
 
-**02 — Put something real in the world**
-*Activations and installations*
+**Activations and installations**
+*Put something real in the world*
 > Physical builds, branded environments, and live moments — designed, engineered, and produced end to end, including the parts nobody wants to think about until week three.
 
-**03 — Make the audience part of it**
-*Interactive experiences*
+**Interactive experiences**
+*Make the audience part of it*
 > Interactive tech, AI-driven moments, immersive environments, and hands-on experiences that turn viewers into participants.
 
-**04 — Build something that lasts**
-*Platforms and products*
-> Websites, tools, and digital products with real architecture behind them, built to be maintained rather than just launched.
-
-**Pointer into Work:**
-> See what this looks like in practice → **[Our work]**
+**Platforms and products**
+*Build something that lasts*
+> Websites, tools, brand portals, and digital products with real architecture behind them, built to be maintained over time.
 
 ---
 
@@ -97,7 +84,7 @@ These four should be the exact filter labels on the Work page, so the categories
 
 **Eyebrow:** WHEN TO BRING US IN
 
-**Headline:**
+**H1:**
 > We work best when we're brought in early, so we can help shape what's possible before the brief is set.
 
 **Four stages with a question at each:**
@@ -109,13 +96,13 @@ These four should be the exact filter labels on the Work page, so the categories
 | CONCEPTING | Can it be built — and for how much? |
 | READY TO BUILD | Who's going to make this? |
 
-*Note: the third question was shortened from "Can it be built, and what'll it cost?" so all four wrap to a consistent depth.*
+All four treated equally — no fading or de-emphasis.
 
-**Closing paragraph:**
-> If you're asking any of these, ask us. The earlier we're in, the more we can shape what's possible — but there's no wrong time to get in touch.
+**P1:**
+> If you're asking any of these, ask us — there's no wrong time to get in touch. And if what you've got doesn't look like a campaign at all, ask us anyway. Solving problems is a lot of what we do.
 
-**Budget line** *(sits with the closing paragraph, or just under it)*
-> Not sure whether your budget matches the idea? Ask early — that's a quick conversation, and much better to have now than after a client has seen a concept.
+**P2 — budget** *(sits with P1, or just under it)*
+> Not sure the budget matches the idea? That's a quick conversation, and better now than after a client's seen a concept.
 
 ---
 
@@ -123,13 +110,11 @@ These four should be the exact filter labels on the Work page, so the categories
 
 **Eyebrow:** WHO WE'VE WORKED WITH
 
-No headline. Eyebrow and logos only.
+No headline, no button. Eyebrow and logos only — the page ends on proof, then the contact banner.
 
 Logo wall, 15 clients:
 
 State Street · Verizon · Mastercard · Lockheed Martin · Prudential · SAS · Lysol · Chick-fil-A · Mucinex · MGM · Instax · NY Lottery · Annovera · US Bank · Fujifilm
-
-**Button:** See our work
 
 ---
 
@@ -141,14 +126,33 @@ Slim strip at the foot of every page. Not an embedded form.
 
 **Buttons:** Chat on MS Teams · Send us a note
 
-**Build note:** the logo wall's "See our work" button now sits directly above this banner. Two buttons stacked close together — worth checking the spacing works, or dropping the logo wall button since Work is already in the main nav.
+---
+
+## Changes from the previous version
+
+- **S1 P1** — cut the "beyond the campaign" what-we-do claim; the section now does orientation only, and Section 2 makes that claim properly.
+- **S1 P2** — "hoping they talk to each other" replaced with "one conversation instead of three, and nothing gets lost in between." Positive framing, and it avoids a dig at vendor relationships some readers manage.
+- **S1 at-a-glance row** — cut. Repeated the one-team claim, weaker credibility than the logo wall, and closes an open item.
+- **S2 H1** — replaced with "From a pop-up to a digital platform, we design it, build it, and launch it."
+- **S2 P1** — third sentence cut (the H1 now carries the range). "Flight ends" changed to "campaign ends" for an Omnicom-wide audience.
+- **S2 capabilities** — hierarchy flipped so the category name leads and the purpose line sits beneath; numbers removed. Readers now scan the same four words they'll see as Work filters.
+- **S2 Platforms and products** — brand portals added to the list; "built to be maintained rather than just launched" reworded to avoid colliding with "launch it" in the H1.
+- **S2 pointer into Work** — cut. Main nav and image cluster already route there.
+- **S3 P1** — condensed, and a catch-all added for work that doesn't arrive campaign-shaped (brand portals, internal tools, broken processes). The four stages assume a brief, concept, build sequence; this catches everything that doesn't.
+- **S4 button** — cut. Work is in the main nav, and it was stacking against the contact banner.
 
 ---
 
 ## Open items
 
-- **At-a-glance numbers** — team size, years, agency reach. Needed if you want that row; otherwise cut it and the logo wall carries the credibility on its own.
-- **Awards / recognition** — considered resolved. The logo wall does this job better for an internal audience than an award citation would.
 - **Client logo sensitivity** — worth a quick check that showing all 15 accounts on an Omnicom-wide page is fine with the relevant account teams.
 - **Response-time promise** — "Can it be built — and for how much?" implies a fast answer. Worth confirming the team can turn around a rough feasibility and cost read quickly, since the copy sets that expectation.
 - **Image selection** — 6–8 project images needed for the two scatter clusters, ideally ones that crop well to circles.
+- **Brand portal project count** — still determines whether the Work page warrants a dedicated filter. Doesn't block this page.
+
+### Resolved since last version
+
+- **At-a-glance numbers** — moot, row cut.
+- **Awards / recognition** — the logo wall does this job better for an internal audience.
+- **Brand portals placement** — housed in Platforms and products, with the Section 3 catch-all covering readers who don't recognise the service by name.
+- **Scope catch-all** — was a post-launch item; the Section 3 closing paragraph now handles it.
