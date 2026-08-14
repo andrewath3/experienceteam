@@ -1,26 +1,38 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { wordmark, primaryNav } from "@/data/global";
 import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border-subtle bg-background/90 backdrop-blur">
-      <div className="mx-auto max-w-7xl px-6 md:px-10 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xs font-bold tracking-[0.15em] uppercase text-accent">
+      <div className="mx-auto max-w-6xl px-6 md:px-10 h-16 flex items-center justify-between">
+        <Link href="/" className="text-lg font-bold text-foreground">
           {wordmark}
         </Link>
 
         <nav className="hidden sm:flex items-center gap-8 text-xs font-semibold tracking-[0.1em] uppercase text-text-secondary">
-          {primaryNav.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-foreground transition-colors">
-              {link.label}
-            </Link>
-          ))}
+          {primaryNav.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={`transition-colors hover:text-accent ${
+                  isActive ? "text-accent underline underline-offset-4" : ""
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <ThemeToggle />
         </nav>
 
@@ -45,16 +57,22 @@ export default function Header() {
 
       {open && (
         <div className="sm:hidden border-t border-border-subtle bg-background px-6 py-4 flex flex-col gap-4 text-xs font-semibold tracking-[0.1em] uppercase text-text-secondary">
-          {primaryNav.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="hover:text-foreground transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {primaryNav.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                onClick={() => setOpen(false)}
+                className={`transition-colors hover:text-accent ${
+                  isActive ? "text-accent underline underline-offset-4" : ""
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
       )}
     </header>

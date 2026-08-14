@@ -6,6 +6,7 @@ import Image from "next/image";
 import FilterGroup from "@/components/FilterGroup";
 import { projects, projectTypes, type ProjectType, type BudgetBand } from "@/data/projects";
 import { workPage } from "@/data/work-page";
+import { getLogoByClientName } from "@/data/logos";
 import { withBasePath } from "@/lib/base-path";
 
 type TypeFilter = "All" | ProjectType;
@@ -70,29 +71,29 @@ export default function WorkGallery() {
   };
 
   return (
-    <div>
+    <div className="flex h-full flex-col">
       {/* Filters */}
-      <div className="px-6 md:px-10 max-w-6xl mx-auto flex flex-wrap items-start gap-x-10 gap-y-4">
+      <div className="px-6 md:px-10 max-w-6xl mx-auto w-full flex flex-wrap items-start gap-x-9 gap-y-4 shrink-0">
         <FilterGroup
           label="Project Type"
           options={["All", ...projectTypes] as TypeFilter[]}
           active={activeType}
           onChange={setActiveType}
           formatOption={(type) => (type === "All" ? `All (${projects.length})` : type)}
-          className="flex-[2] min-w-[260px]"
+          className="min-w-[260px]"
         />
         <FilterGroup
           label="Budget"
           options={workPage.budgetFilterLabels}
           active={activeBudget}
           onChange={setActiveBudget}
-          className="flex-1 min-w-[200px]"
+          className="min-w-[200px]"
         />
       </div>
 
       {/* Zero results */}
       {total === 0 && (
-        <div className="px-6 md:px-10 max-w-6xl mx-auto mt-12 py-16 text-center">
+        <div className="px-6 md:px-10 max-w-6xl mx-auto mt-12 py-16 text-center shrink-0">
           <p className="text-text-secondary">{workPage.zeroResults.line}</p>
           <button
             onClick={clearFilters}
@@ -105,8 +106,8 @@ export default function WorkGallery() {
 
       {/* Horizontal scroll gallery */}
       {total > 0 && (
-        <div className="mt-10">
-          <div className="px-6 md:px-10 max-w-6xl mx-auto flex items-center justify-between mb-3">
+        <div className="mt-10 flex min-h-0 flex-1 flex-col">
+          <div className="px-6 md:px-10 max-w-6xl mx-auto w-full flex items-center justify-between mb-3 shrink-0">
             <p className="text-sm font-semibold text-text-secondary tabular-nums">
               {String(range.start).padStart(2, "0")} — {String(range.end).padStart(2, "0")} OF {String(total).padStart(2, "0")}
             </p>
@@ -115,7 +116,7 @@ export default function WorkGallery() {
                 onClick={() => scrollByPage(-1)}
                 disabled={!canScrollLeft}
                 aria-label="Scroll left"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle text-foreground transition-opacity disabled:opacity-30 hover:border-accent/40 cursor-pointer disabled:cursor-default"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle bg-black text-text-secondary transition-colors disabled:opacity-30 hover:border-accent hover:text-accent cursor-pointer disabled:cursor-default"
               >
                 &larr;
               </button>
@@ -123,21 +124,23 @@ export default function WorkGallery() {
                 onClick={() => scrollByPage(1)}
                 disabled={!canScrollRight}
                 aria-label="Scroll right"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle text-foreground transition-opacity disabled:opacity-30 hover:border-accent/40 cursor-pointer disabled:cursor-default"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle bg-black text-text-secondary transition-colors disabled:opacity-30 hover:border-accent hover:text-accent cursor-pointer disabled:cursor-default"
               >
                 &rarr;
               </button>
             </div>
           </div>
 
-          <div ref={scrollRef} className="flex overflow-x-auto scrollbar-hide gap-[2px] bg-accent/30">
-            {filtered.map((project) => (
+          <div ref={scrollRef} className="work-gallery-row flex min-h-0 flex-1 overflow-x-auto scrollbar-hide gap-[2px] bg-background">
+            {filtered.map((project) => {
+              const logo = getLogoByClientName(project.client);
+              return (
               <Link
                 key={project.slug}
                 href={`/work/${project.slug}`}
                 className="group relative flex-none w-[220px] sm:w-[240px] hover:w-[420px] sm:hover:w-[460px] transition-[width] duration-500 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:z-10"
               >
-                <div className="relative h-[420px] sm:h-[520px] md:h-[620px] overflow-hidden bg-surface">
+                <div className="work-thumb absolute inset-0 overflow-hidden bg-surface transition-[filter] duration-150 ease-out">
                   <Image
                     src={withBasePath(project.image)}
                     alt={`${project.client} — ${project.title}`}
@@ -146,14 +149,33 @@ export default function WorkGallery() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="bg-surface-header px-4 py-4">
-                  <p className="text-sm md:text-base font-bold text-foreground whitespace-nowrap overflow-hidden text-ellipsis">
-                    {project.client}
-                  </p>
-                  <p className="text-xs md:text-sm text-accent whitespace-nowrap overflow-hidden text-ellipsis">
+                <div className="absolute top-0 left-0 right-0 z-10 -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-background/75 backdrop-blur-sm px-4 pt-4 pb-2">
+                  {logo?.src && (
+                    <div
+                      className="relative h-10 w-36 origin-left"
+                      style={logo.scale ? { transform: `scale(${logo.scale})` } : undefined}
+                    >
+                      <Image
+                        src={withBasePath(logo.src)}
+                        alt={project.client}
+                        fill
+                        sizes="180px"
+                        className="logo-mark object-contain object-left"
+                      />
+                    </div>
+                  )}
+                  <p className="mt-4 text-2xl md:text-3xl font-bold text-foreground whitespace-nowrap overflow-hidden text-ellipsis">
                     {project.title}
                   </p>
-                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <p className="text-sm md:text-base text-foreground whitespace-nowrap overflow-hidden text-ellipsis">
+                    {project.client}
+                  </p>
+                  <div className="mt-3 flex flex-wrap items-center gap-2">
+                    {project.type && (
+                      <span className="rounded-full border border-accent/30 bg-surface px-2.5 py-0.5 text-[11px] font-semibold whitespace-nowrap text-foreground">
+                        {project.type}
+                      </span>
+                    )}
                     {project.budget && (
                       <span className="rounded-full border border-accent/30 bg-surface px-2.5 py-0.5 text-[11px] font-semibold whitespace-nowrap text-foreground">
                         {BUDGET_LABELS[project.budget]}
@@ -164,8 +186,10 @@ export default function WorkGallery() {
                     {project.awards.length > 0 ? project.awards.join(" · ") : ""}
                   </p>
                 </div>
+                <div className="absolute inset-y-0 left-0 z-20 w-1 bg-accent" />
               </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}

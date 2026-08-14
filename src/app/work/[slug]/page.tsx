@@ -51,7 +51,7 @@ export default async function ProjectPage({
   ];
 
   return (
-    <div className="px-6 md:px-10 max-w-4xl mx-auto pt-12 pb-24">
+    <div className="px-6 md:px-10 max-w-6xl mx-auto pt-12 pb-24">
       <Link href="/work" className="text-sm text-text-secondary hover:text-foreground transition-colors">
         &larr; Back to Work
       </Link>
@@ -94,6 +94,7 @@ export default async function ProjectPage({
           className="object-cover"
           priority
         />
+        <div className="absolute inset-y-0 left-0 w-1 bg-accent" />
       </div>
 
       <div className="mt-10 max-w-2xl">

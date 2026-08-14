@@ -7,9 +7,11 @@ export const primaryNav = [
 ];
 
 export const contactBanner = {
-  line: "Got something in mind? Let's chat!",
+  eyebrow: "Contact",
+  heading: "Let's chat!",
+  line: "Drop us an email or message us on Teams.",
   teamsLabel: "Chat on MS Teams",
-  noteLabel: "Send us a note",
+  noteLabel: "Let's chat!",
 };
 
 /** Placeholder — verify accessible to staff at Omnicom agencies outside OP's tenant. */

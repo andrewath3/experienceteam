@@ -4,12 +4,12 @@ import { whenToBringUsIn } from "@/data/about";
 
 export default function WhenToBringUsIn() {
   return (
-    <section id="when-to-bring-us-in" className="px-6 md:px-10 py-16 max-w-5xl mx-auto">
-      <Reveal className="max-w-2xl">
+    <section id="when-to-bring-us-in" className="scroll-mt-36 px-6 md:px-10 py-16 max-w-6xl mx-auto">
+      <Reveal>
         <Eyebrow>{whenToBringUsIn.eyebrow}</Eyebrow>
-        <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+        <h1 className="mt-6 text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
           {whenToBringUsIn.headline}
-        </h2>
+        </h1>
       </Reveal>
 
       <div className="relative mt-16">
@@ -26,8 +26,11 @@ export default function WhenToBringUsIn() {
       </div>
 
       <Reveal delay={0.15} className="mt-12 max-w-2xl space-y-4">
-        <p className="text-lg text-text-secondary leading-relaxed">{whenToBringUsIn.closing}</p>
-        <p className="text-text-secondary leading-relaxed">{whenToBringUsIn.budgetLine}</p>
+        {whenToBringUsIn.closingParagraphs.map((paragraph, i) => (
+          <p key={i} className="text-lg text-text-secondary leading-relaxed">
+            {paragraph}
+          </p>
+        ))}
       </Reveal>
     </section>
   );
