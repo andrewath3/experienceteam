@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { RevealGroup, RevealItem } from "@/components/Reveal";
 import { logos } from "@/data/logos";
+import { withBasePath } from "@/lib/base-path";
 
 /**
  * Logo artwork in `public/logos` is white-on-transparent (built for dark
@@ -17,12 +17,10 @@ export default function LogoWall() {
             <div className="flex h-32 items-center justify-center px-4 text-center">
               {logo.src ? (
                 <div className="relative h-[4.8rem] w-full max-w-[11.2rem]">
-                  <Image
-                    src={logo.src}
+                  <img
+                    src={withBasePath(logo.src)}
                     alt={logo.name}
-                    fill
-                    sizes="180px"
-                    className="logo-mark object-contain opacity-60"
+                    className="logo-mark h-full w-full object-contain opacity-60"
                   />
                 </div>
               ) : (
