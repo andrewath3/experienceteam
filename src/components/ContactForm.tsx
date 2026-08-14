@@ -104,7 +104,7 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="text-xs font-bold tracking-wide uppercase text-accent-muted">
+      <label htmlFor={id} className="text-xs font-bold tracking-wide uppercase text-foreground">
         {label}
       </label>
       <input
@@ -137,7 +137,7 @@ function TextArea({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="text-xs font-bold tracking-wide uppercase text-accent-muted">
+      <label htmlFor={id} className="text-xs font-bold tracking-wide uppercase text-foreground">
         {label}
       </label>
       <textarea

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { wordmark, primaryNav } from "@/data/global";
 import ThemeToggle from "@/components/ThemeToggle";
+import BgToggle from "@/components/BgToggle";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -33,10 +34,12 @@ export default function Header() {
               </Link>
             );
           })}
+          <BgToggle />
           <ThemeToggle />
         </nav>
 
         <div className="flex items-center gap-2 sm:hidden">
+          <BgToggle />
           <ThemeToggle />
           <button
             className="text-foreground"

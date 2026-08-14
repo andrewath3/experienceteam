@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeScript from "@/components/ThemeScript";
+import BgScript from "@/components/BgScript";
+import FloatingOrbsBackground from "@/components/FloatingOrbsBackground";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GlobalContactBanner from "@/components/GlobalContactBanner";
@@ -35,6 +37,8 @@ export default function RootLayout({
         style={{ "--bg-image-url": `url(${basePath}/site-bg.svg)` } as React.CSSProperties}
       >
         <ThemeScript />
+        <BgScript />
+        <FloatingOrbsBackground />
         <Header />
         <main className="flex-1">{children}</main>
         <GlobalContactBanner />

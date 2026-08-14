@@ -10,6 +10,8 @@
   --text-secondary: #c7cbce;
   --border-subtle: rgba(255, 255, 255, 0.08);
   --bg-image-opacity: 0.5;
+  --orb-bg-opacity: 1;
+  --footer-bg: #000000;
 }
 
 :root[data-theme="light"] {
@@ -17,11 +19,13 @@
   --foreground: #14181a;
   --surface: #ffffff;
   --surface-header: #f0f2f2;
-  --accent: #0f9e86;
-  --accent-muted: #0c8874;
+  --accent: #2563eb;
+  --accent-muted: #1d4ed8;
   --text-secondary: #52595c;
   --border-subtle: rgba(0, 0, 0, 0.08);
   --bg-image-opacity: 0.15;
+  --orb-bg-opacity: 0.9;
+  --footer-bg: #f0f2f2;
 }
 
 @theme inline {
@@ -29,6 +33,7 @@
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
   --color-surface-header: var(--surface-header);
+  --color-footer-bg: var(--footer-bg);
   --color-accent: var(--accent);
   --color-accent-muted: var(--accent-muted);
   --color-text-secondary: var(--text-secondary);
@@ -57,6 +62,7 @@ body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
+/* "Graphic lines" background — hidden by default, shown via the header toggle. */
 body::before {
   content: "";
   position: absolute;
@@ -66,8 +72,54 @@ body::before {
   background-position: top center;
   background-repeat: repeat-y;
   background-size: 100% auto;
-  opacity: var(--bg-image-opacity);
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+:root[data-bg="lines"] body::before {
+  opacity: var(--bg-image-opacity);
+}
+
+/* "Floating light" background — slow-drifting blurred orbs, default. */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--orb-bg-opacity);
+  transition: opacity 0.4s ease;
+}
+
+:root[data-bg="lines"] .bg-orbs {
+  opacity: 0;
+}
+
+.orb-field-ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 32%,
+    rgba(180, 176, 168, 0.32),
+    rgba(150, 146, 138, 0.14) 45%,
+    rgba(120, 116, 108, 0) 72%
+  );
+  filter: blur(38px);
+  will-change: transform;
+  mix-blend-mode: screen;
+}
+
+:root[data-theme="light"] .orb-field-ball {
+  background: radial-gradient(
+    circle at 35% 32%,
+    rgba(37, 99, 235, 0.32),
+    rgba(37, 99, 235, 0.15) 45%,
+    rgba(37, 99, 235, 0) 72%
+  );
+  mix-blend-mode: multiply;
 }
 
 ::selection {
