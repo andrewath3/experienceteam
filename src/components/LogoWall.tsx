@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { RevealGroup, RevealItem } from "@/components/Reveal";
 import { logos } from "@/data/logos";
+import { withBasePath } from "@/lib/base-path";
 
 /**
  * Logo artwork in `public/logos` is white-on-transparent (built for dark
@@ -17,7 +18,7 @@ export default function LogoWall() {
               {logo.src ? (
                 <div className="relative h-[4.8rem] w-full max-w-[11.2rem]">
                   <img
-                    src={logo.src}
+                    src={withBasePath(logo.src)}
                     alt={logo.name}
                     className="logo-mark h-full w-full object-contain opacity-60"
                   />
