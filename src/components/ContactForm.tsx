@@ -77,7 +77,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="mt-2 w-full sm:w-auto rounded-full bg-accent px-8 py-3 text-sm font-bold text-[#0d1620] hover:bg-accent-muted transition-colors cursor-pointer"
+        className="mt-2 w-full sm:w-auto rounded-full bg-accent px-8 py-3 text-sm font-bold text-on-accent hover:bg-accent-muted transition-colors cursor-pointer"
       >
         {contactPage.submitLabel}
       </button>

@@ -15,13 +15,22 @@ const PRESET_4: Node[] = [
   { x: 90, y: 20, size: 175 },
 ];
 
-function layoutFor(count: number): Node[] {
-  if (count === 4) return PRESET_4;
+/** Smaller variant for narrower containers (e.g. side-by-side with a text column). */
+const PRESET_4_COMPACT: Node[] = [
+  { x: 14, y: 72, size: 145 },
+  { x: 44, y: 22, size: 115 },
+  { x: 70, y: 68, size: 160 },
+  { x: 95, y: 18, size: 105 },
+];
+
+function layoutFor(count: number, compact: boolean): Node[] {
+  if (count === 4) return compact ? PRESET_4_COMPACT : PRESET_4;
   // Generic fallback for other counts: gentle wave, evenly spaced.
+  const size = compact ? 130 : 200;
   return Array.from({ length: count }, (_, i) => ({
     x: (100 / (count + 1)) * (i + 1),
     y: 45 + (i % 2 === 0 ? 25 : -25),
-    size: 200,
+    size,
   }));
 }
 
@@ -46,12 +55,18 @@ function FloatingLine({ prev, prevIndex, node, index }: { prev: Node; prevIndex:
   );
 }
 
-export default function ImageScatter({ slugs }: { slugs: string[] }) {
+export default function ImageScatter({ slugs, compact = false }: { slugs: string[]; compact?: boolean }) {
   const items = slugs.map((slug) => getProjectBySlug(slug)).filter((p): p is NonNullable<typeof p> => !!p);
-  const nodes = layoutFor(items.length);
+  const nodes = layoutFor(items.length, compact);
 
   return (
-    <div className="relative h-[420px] sm:h-[560px] md:h-[640px] w-full py-6">
+    <div
+      className={
+        compact
+          ? "relative h-[380px] w-full py-6"
+          : "relative h-[420px] sm:h-[560px] md:h-[640px] w-full py-6"
+      }
+    >
       <svg
         className="absolute inset-0 h-full w-full opacity-40"
         viewBox="0 0 100 100"

@@ -34,13 +34,16 @@ export default function Header() {
               </Link>
             );
           })}
-          <BgToggle />
-          <ThemeToggle />
+          <div className="self-center flex items-center justify-center gap-1 rounded-md border border-border-subtle bg-foreground/5 px-2 py-1">
+            <span className="text-[10px] font-semibold tracking-[0.1em] uppercase text-text-secondary">
+              Themes
+            </span>
+            <BgToggle className="h-6 w-6" />
+            <ThemeToggle className="h-6 w-6" />
+          </div>
         </nav>
 
         <div className="flex items-center gap-2 sm:hidden">
-          <BgToggle />
-          <ThemeToggle />
           <button
             className="text-foreground"
             aria-label="Toggle menu"
@@ -76,6 +79,13 @@ export default function Header() {
               </Link>
             );
           })}
+          <div className="flex items-center justify-center gap-1 self-start rounded-md border border-border-subtle bg-foreground/5 px-2 py-1">
+            <span className="text-[10px] font-semibold tracking-[0.1em] uppercase text-text-secondary">
+              Themes
+            </span>
+            <BgToggle className="h-6 w-6" />
+            <ThemeToggle className="h-6 w-6" />
+          </div>
         </div>
       )}
     </header>

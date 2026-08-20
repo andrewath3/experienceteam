@@ -58,7 +58,7 @@ export default async function ProjectPage({
 
       <div className="mt-6">
         <p className="text-sm font-bold text-accent">{project.client}</p>
-        <h1 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+        <h1 className="mt-2 text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
           {project.title}
         </h1>
 
@@ -110,7 +110,7 @@ export default async function ProjectPage({
       <div className="mt-16 max-w-2xl space-y-16">
         {placeholderSections.map((section, i) => (
           <div key={section.heading}>
-            <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight">{section.heading}</h2>
+            <h2 className="text-2xl font-extrabold tracking-tight">{section.heading}</h2>
             <p className="mt-3 italic text-text-secondary/70 leading-relaxed">{section.body}</p>
             {i < placeholderSections.length - 1 && (
               <div className="mt-8 flex items-center justify-center rounded-xl border border-dashed border-border-subtle bg-surface aspect-[16/9] text-sm text-text-secondary/60">

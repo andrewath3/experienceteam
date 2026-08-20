@@ -7,7 +7,7 @@ export default function WhenToBringUsIn() {
     <section id="when-to-bring-us-in" className="scroll-mt-36 px-6 md:px-10 py-16 max-w-6xl mx-auto">
       <Reveal>
         <Eyebrow>{whenToBringUsIn.eyebrow}</Eyebrow>
-        <h1 className="mt-6 text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
+        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-semibold tracking-tight leading-[1.05]">
           {whenToBringUsIn.headline}
         </h1>
       </Reveal>
@@ -18,8 +18,8 @@ export default function WhenToBringUsIn() {
           {whenToBringUsIn.stages.map((stage) => (
             <RevealItem key={stage.label} className="relative">
               <div className="hidden md:block relative z-10 mb-4 h-3.5 w-3.5 rounded-full border-2 border-background bg-accent" />
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-accent-muted">{stage.label}</p>
-              <p className="mt-2 min-h-[3.5rem] text-lg sm:text-xl font-bold leading-snug">{stage.question}</p>
+              <p className="font-mono text-xs tracking-[0.1em] uppercase text-foreground">{stage.label}</p>
+              <p className="mt-2 min-h-[3.5rem] text-xl font-bold leading-snug">{stage.question}</p>
             </RevealItem>
           ))}
         </RevealGroup>
