@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { RevealGroup, RevealItem } from "@/components/Reveal";
 import { logos } from "@/data/logos";
 import { withBasePath } from "@/lib/base-path";
 
@@ -9,12 +8,14 @@ import { withBasePath } from "@/lib/base-path";
  * Clients without an asset yet fall back to a styled wordmark tile.
  */
 export default function LogoWall() {
+  const track = [...logos, ...logos];
+
   return (
-    <div>
-      <RevealGroup className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-4 sm:gap-x-12 sm:gap-y-16">
-        {logos.map((logo) => {
+    <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+      <div className="logo-marquee-track flex w-max items-center">
+        {track.map((logo, i) => {
           const tile = (
-            <div className="flex h-32 items-center justify-center px-4 text-center">
+            <div className="flex h-32 w-48 shrink-0 items-center justify-center px-4 text-center">
               {logo.src ? (
                 <div className="relative h-[4.8rem] w-full max-w-[11.2rem]">
                   <img
@@ -30,29 +31,19 @@ export default function LogoWall() {
               )}
             </div>
           );
-          return (
-            <RevealItem key={logo.name}>
-              {logo.projectSlug ? (
-                <Link
-                  href={`/work/${logo.projectSlug}`}
-                  className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
-                >
-                  {tile}
-                </Link>
-              ) : (
-                tile
-              )}
-            </RevealItem>
+          return logo.projectSlug ? (
+            <Link
+              key={`${logo.name}-${i}`}
+              href={`/work/${logo.projectSlug}`}
+              className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+              tabIndex={i < logos.length ? 0 : -1}
+            >
+              {tile}
+            </Link>
+          ) : (
+            <div key={`${logo.name}-${i}`}>{tile}</div>
           );
         })}
-      </RevealGroup>
-      <div className="mt-12 flex justify-center">
-        <Link
-          href="/work"
-          className="rounded-full border border-accent/40 px-6 py-3 text-sm font-bold text-accent hover:border-accent transition-colors"
-        >
-          See our work
-        </Link>
       </div>
     </div>
   );

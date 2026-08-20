@@ -46,6 +46,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--background);
 }
 
 /* Client logo marks in public/logos are white-on-transparent (dark-mode
@@ -60,6 +61,7 @@ html {
 
 body {
   position: relative;
+  isolation: isolate;
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -147,4 +149,27 @@ body::before {
 /* Work gallery: hovering a card desaturates and blurs the rest of the row. */
 .work-gallery-row:hover a:not(:hover) .work-thumb {
   filter: blur(1.5px);
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-marquee-track {
+  animation: logo-marquee 48s linear infinite;
+}
+
+.logo-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track {
+    animation: none;
+  }
 }
