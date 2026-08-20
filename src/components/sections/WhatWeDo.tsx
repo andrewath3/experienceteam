@@ -6,7 +6,7 @@ import { whatWeDo } from "@/data/about";
 
 export default function WhatWeDo() {
   return (
-    <section id="what-we-do" className="scroll-mt-36 px-6 md:px-10 py-16 max-w-6xl mx-auto">
+    <section id="what-we-do" className="scroll-mt-36 px-6 md:px-10 py-16 max-w-6xl 2xl:max-w-7xl mx-auto">
       <div className="lg:flex lg:items-start lg:gap-12">
         <div className="lg:w-[60%] lg:min-w-0 lg:sticky lg:top-36 lg:self-start">
           <Reveal>
