@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Eyebrow from "@/components/Eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { whenToBringUsIn } from "@/data/about";
@@ -31,6 +32,15 @@ export default function WhenToBringUsIn() {
             {paragraph}
           </p>
         ))}
+      </Reveal>
+
+      <Reveal delay={0.2} className="mt-12">
+        <Link
+          href="/work"
+          className="inline-block rounded-full border border-accent/40 px-6 py-3 text-sm font-bold text-accent hover:border-accent transition-colors"
+        >
+          See our work
+        </Link>
       </Reveal>
     </section>
   );
