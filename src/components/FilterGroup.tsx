@@ -66,8 +66,8 @@ export default function FilterGroup<T extends string>({
             onClick={() => onChange(opt)}
             className={`rounded-full border px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors cursor-pointer ${
               active === opt
-                ? "border-accent bg-accent text-[#0d1620]"
-                : "border-border-subtle bg-black text-text-secondary hover:border-accent hover:text-accent"
+                ? "border-accent bg-accent text-on-accent"
+                : "border-border-subtle bg-surface text-text-secondary hover:border-accent hover:text-accent"
             }`}
           >
             {display(opt)}

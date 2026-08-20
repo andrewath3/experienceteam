@@ -9,10 +9,10 @@ export default function WhatWeDo() {
     <section id="what-we-do" className="scroll-mt-36 px-6 md:px-10 py-16 max-w-6xl mx-auto">
       <Reveal>
         <Eyebrow>{whatWeDo.eyebrow}</Eyebrow>
-        <h1 className="mt-6 text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
+        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-semibold tracking-tight leading-[1.05]">
           {whatWeDo.headline}
         </h1>
-        <p className="mt-2 text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] italic text-accent">
+        <p className="mt-2 text-3xl sm:text-4xl md:text-5xl lg:text-4xl font-semibold tracking-tight leading-[1.1] italic text-accent">
           {whatWeDo.accentLine}
         </p>
         <p className="mt-5 text-lg text-text-secondary leading-relaxed">{whatWeDo.intro}</p>

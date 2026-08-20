@@ -7,6 +7,7 @@
   --surface-header: #0d1620;
   --accent: #2dd4b8;
   --accent-muted: #2fc7a8;
+  --on-accent: #0d1620;
   --text-secondary: #c7cbce;
   --border-subtle: rgba(255, 255, 255, 0.08);
   --bg-image-opacity: 0.5;
@@ -21,6 +22,7 @@
   --surface-header: #f0f2f2;
   --accent: #2563eb;
   --accent-muted: #1d4ed8;
+  --on-accent: #ffffff;
   --text-secondary: #52595c;
   --border-subtle: rgba(0, 0, 0, 0.08);
   --bg-image-opacity: 0.15;
@@ -36,6 +38,7 @@
   --color-footer-bg: var(--footer-bg);
   --color-accent: var(--accent);
   --color-accent-muted: var(--accent-muted);
+  --color-on-accent: var(--on-accent);
   --color-text-secondary: var(--text-secondary);
   --color-border-subtle: var(--border-subtle);
   --font-sans: var(--font-inter);

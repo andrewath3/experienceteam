@@ -9,9 +9,9 @@ export const metaDescription =
   "A team of experiential producers, user-centered designers, and creative technologists, building brand experiences across Omnicom.";
 
 export const whoWeAre = {
-  eyebrow: "WHO",
+  eyebrow: "WHO WE ARE",
   headlineLines: [
-    "We are experiential producers,",
+    "Experiential producers,",
     "user-centered designers,",
     "& creative technologists.",
   ],
@@ -33,7 +33,7 @@ export type Capability = {
 };
 
 export const whatWeDo = {
-  eyebrow: "WHAT",
+  eyebrow: "WHAT WE DO",
   headline: "We design, build, and launch.",
   accentLine: "—from pop-ups to digital platforms.",
   intro:
@@ -70,9 +70,9 @@ export const whatWeDo = {
 };
 
 export const whenToBringUsIn = {
-  eyebrow: "WHEN",
+  eyebrow: "WHEN TO BRING US IN",
   headline:
-    "We work best when we're brought in early, so we can help shape what's possible before the brief is set.",
+    "We can be brought in at any stage, but the earlier the better, while there's still room to help shape what's possible.",
   stages: [
     { label: "A LOOSE IDEA", question: "Could we actually do this?" },
     { label: "WRITING THE BRIEF", question: "What should the brief ask for?" },
@@ -88,5 +88,5 @@ export const whenToBringUsIn = {
 };
 
 export const whoWeveWorkedWith = {
-  eyebrow: "CLIENTS",
+  eyebrow: "WHO WE'VE WORKED WITH",
 };

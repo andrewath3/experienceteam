@@ -116,7 +116,7 @@ export default function WorkGallery() {
                 onClick={() => scrollByPage(-1)}
                 disabled={!canScrollLeft}
                 aria-label="Scroll left"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle bg-black text-text-secondary transition-colors disabled:opacity-30 hover:border-accent hover:text-accent cursor-pointer disabled:cursor-default"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle bg-surface text-text-secondary transition-colors disabled:opacity-30 hover:border-accent hover:text-accent cursor-pointer disabled:cursor-default"
               >
                 &larr;
               </button>
@@ -124,14 +124,14 @@ export default function WorkGallery() {
                 onClick={() => scrollByPage(1)}
                 disabled={!canScrollRight}
                 aria-label="Scroll right"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle bg-black text-text-secondary transition-colors disabled:opacity-30 hover:border-accent hover:text-accent cursor-pointer disabled:cursor-default"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle bg-surface text-text-secondary transition-colors disabled:opacity-30 hover:border-accent hover:text-accent cursor-pointer disabled:cursor-default"
               >
                 &rarr;
               </button>
             </div>
           </div>
 
-          <div ref={scrollRef} className="work-gallery-row flex min-h-0 flex-1 overflow-x-auto scrollbar-hide gap-[2px] bg-background">
+          <div ref={scrollRef} className="work-gallery-row flex min-h-0 flex-1 overflow-x-auto scrollbar-hide bg-background">
             {filtered.map((project) => {
               const logo = getLogoByClientName(project.client);
               return (

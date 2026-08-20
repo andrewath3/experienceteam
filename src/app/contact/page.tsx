@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <div className="px-6 md:px-10 max-w-2xl mx-auto pt-16 pb-24">
       <Eyebrow>{contactPage.eyebrow}</Eyebrow>
-      <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
+      <h1 className="mt-6 text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
         {contactPage.headline}
       </h1>
       <p className="mt-5 text-lg text-text-secondary leading-relaxed">{contactPage.body}</p>
